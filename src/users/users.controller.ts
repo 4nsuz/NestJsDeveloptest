@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { FindUserDto } from './dto/find-userfind.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
@@ -12,9 +13,9 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
-  @Get(':role')
-  findAll(@Param('role') role: string) {
-    return this.usersService.findAll(role);
+  @Get()
+  findAll() {
+    return this.usersService.findAll();
   }
 
   @Get('/idFind/:id')
@@ -22,8 +23,8 @@ export class UsersController {
     return this.usersService.findOne(+id);
   }
 
-  @Get('/username/:username')
-  userFindOne(@Param('username') username: string) {
+  @Post('/finduser')
+  userFindOne(@Body() username: FindUserDto) {
     return this.usersService.userFindOne(username);
   }
 

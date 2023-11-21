@@ -5,6 +5,9 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { User } from './users/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
+import { AuthGuard } from './auth/auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -15,13 +18,17 @@ import { User } from './users/entities/user.entity';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'testnestjs',
+      database: 'database_development',
       entities: [User],
       synchronize: true,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [{
+    provide: APP_GUARD,
+    useClass: AuthGuard,
+  },AppService],
 })
 
 export class AppModule {

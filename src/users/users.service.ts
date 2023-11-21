@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
+import { FindUserDto } from './dto/find-userfind.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -16,19 +17,16 @@ export class UsersService {
     return this.usersRepository.save(createUserDto);
   }
 
-  findAll(role: string) {
-    if(role != "Admin"){
-      return "You don't have permission";
-    }else{
+  findAll() {
       return this.usersRepository.find();
-    }
   }
 
   findOne(id: number) {
     return this.usersRepository.findOneBy({ id });
   }
 
-  userFindOne(username: string) {
+  userFindOne(findUserDto: FindUserDto) {
+    const username = findUserDto.username;
     return this.usersRepository.findOneBy({ username });
   }
 
