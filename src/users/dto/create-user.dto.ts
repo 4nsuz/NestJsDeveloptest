@@ -15,4 +15,6 @@ export class CreateUserDto {
     updatedAt: Date;
     createdAt: Date;
     isActive: boolean;
+    @IsNotEmpty()
+    accessrole : string;
 }

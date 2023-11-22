@@ -3,6 +3,8 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { FindUserDto } from './dto/find-userfind.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Role } from './entities/role.enum';
+import { Roles } from './entities/role.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -13,8 +15,12 @@ export class UsersController {
     * in users.service
     * by : Thanaphat
   */
-
+  /*
+    * Limited rights to Admin only.
+    * by : Ittikorn
+  */
   @Post()
+  @Roles(Role.ADMIN)
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -51,7 +57,10 @@ export class UsersController {
   userFindOne(@Body() username: FindUserDto) {
     return this.usersService.userFindOne(username);
   }
-
+  /*
+    * Limited rights to Admin only.
+    * by : Ittikorn
+  */
   /*
     * used to define API path for update function 
     * in users.service
@@ -60,17 +69,24 @@ export class UsersController {
   */
 
   @Patch(':id')
+  @Roles(Role.ADMIN)
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
-
+  /*
+    * Limited rights to Admin only.
+    * by : Ittikorn
+  */
   /*
     * used to define API path for remove function 
     * in users.service
     * by : Thanaphat
   */
 
+
   @Delete(':id')
+  
+  @Roles(Role.ADMIN)
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
