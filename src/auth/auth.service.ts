@@ -16,7 +16,6 @@ export class AuthService {
     */
 
     async signIn(username: string, pass: string): Promise<any> {
-        console.log("Sign In");
         const inputData = {
             username: username,
             password: pass

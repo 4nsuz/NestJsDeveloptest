@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
   constructor(private reflector: Reflector,private jwtService: JwtService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    console.log("Guard Active");
     const isPublic = this.reflector.get<boolean>(
       IS_PUBLIC_KEY,
       context.getHandler(),

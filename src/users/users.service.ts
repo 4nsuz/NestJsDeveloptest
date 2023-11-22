@@ -20,7 +20,10 @@ export class UsersService {
   */
 
   create(createUserDto: CreateUserDto) {
-    return this.usersRepository.save(createUserDto);
+    const jsonObj = createUserDto;
+    jsonObj["createdAt"] = new Date();
+    jsonObj["updatedAt"] = new Date();
+    return this.usersRepository.save(jsonObj);
   }
 
   /*
