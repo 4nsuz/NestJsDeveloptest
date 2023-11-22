@@ -18,12 +18,19 @@ export class AuthController {
 
     @HttpCode(HttpStatus.OK)
 
+    /*
+    * used to define API path for calling sign In function 
+    */
+
     @Public()
     @Post('login')
     signIn(@Body() signInDto: Record<string, any>) {
-        console.log("diSignIn");
         return this.authService.signIn(signInDto.username, signInDto.password);
     }
+
+    /*
+    * API for testing Authentication function
+    */
 
     @Get('profile')
     getProfile(@Request() req) {

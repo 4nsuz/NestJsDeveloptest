@@ -9,6 +9,12 @@ export class AuthService {
         private jwtService: JwtService
     ) { }
 
+    /*
+    * sign In function 
+    * used by user to log in to the system 
+    * before using anoher API
+    */
+
     async signIn(username: string, pass: string): Promise<any> {
         console.log("Sign In");
         const inputData = {

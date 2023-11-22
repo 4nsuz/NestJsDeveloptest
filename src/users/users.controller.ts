@@ -8,35 +8,61 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  /*
+    * used to define API path for calling create function 
+    * in users.service
+  */
+
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
+
+  /*
+    * used to define API path for findAll function 
+    * in users.service
+  */
 
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
+  /*
+    * used to define API path for findOne function 
+    * in users.service
+  */
+
   @Get('/idFind/:id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);
   }
+
+  /*
+    * used to define API path for userFindOne function 
+    * in users.service
+  */
 
   @Post('/finduser')
   userFindOne(@Body() username: FindUserDto) {
     return this.usersService.userFindOne(username);
   }
 
-  @Get('/login/:username/:password')
-  userLogin(@Param('username') username: string ,@Param('password') password: string,) {
-    return this.usersService.userLogin(username,password);
-  }
+  /*
+    * used to define API path for update function 
+    * in users.service
+    * not complete
+  */
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
+
+  /*
+    * used to define API path for remove function 
+    * in users.service
+  */
 
   @Delete(':id')
   remove(@Param('id') id: string) {
