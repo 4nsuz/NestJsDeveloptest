@@ -16,7 +16,7 @@ export class AuthService {
             password: pass
         }
         const user = await this.usersService.userFindOne(inputData);
-        if (user?.password !== pass) {
+        if (user?.password !== pass || user?.isActive !== true) {
             throw new UnauthorizedException();
         } else {
             const payload = { sub: user.id, username: user.username };
