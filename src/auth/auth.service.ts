@@ -13,6 +13,7 @@ export class AuthService {
     * sign In function 
     * used by user to log in to the system 
     * before using anoher API
+    * by : Thanaphat
     */
 
     async signIn(username: string, pass: string): Promise<any> {

@@ -20,6 +20,7 @@ export class AuthController {
 
     /*
     * used to define API path for calling sign In function 
+    * by : Thanaphat
     */
 
     @Public()
@@ -30,6 +31,7 @@ export class AuthController {
 
     /*
     * API for testing Authentication function
+    * by : Thanaphat
     */
 
     @Get('profile')
