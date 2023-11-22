@@ -17,6 +17,7 @@ export class UsersService {
     * create function 
     * used to create user in to the system 
     * use data format in /dto/create-user.dto to create user
+    * by : Thanaphat
   */
 
   create(createUserDto: CreateUserDto) {
@@ -29,6 +30,7 @@ export class UsersService {
   /*
     * findAll function 
     * used to find All user in the system 
+    * by : Thanaphat
   */
 
   findAll() {
@@ -38,6 +40,7 @@ export class UsersService {
   /*
     * findOne function 
     * use id to find one user that match id in the system 
+    * by : Thanaphat
   */
 
   findOne(id: number) {
@@ -47,6 +50,7 @@ export class UsersService {
   /*
     * userFindOne function 
     * use username to find one user that match username in the system 
+    * by : Thanaphat
   */
 
   userFindOne(findUserDto: FindUserDto) {
@@ -65,6 +69,7 @@ export class UsersService {
   /*
     * remove function 
     * use id to delete user that match id in the system 
+    * by : Thanaphat
   */
 
   async remove(id: number) {

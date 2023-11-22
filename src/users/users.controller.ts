@@ -11,6 +11,7 @@ export class UsersController {
   /*
     * used to define API path for calling create function 
     * in users.service
+    * by : Thanaphat
   */
 
   @Post()
@@ -21,6 +22,7 @@ export class UsersController {
   /*
     * used to define API path for findAll function 
     * in users.service
+    * by : Thanaphat
   */
 
   @Get()
@@ -31,6 +33,7 @@ export class UsersController {
   /*
     * used to define API path for findOne function 
     * in users.service
+    * by : Thanaphat
   */
 
   @Get('/idFind/:id')
@@ -41,6 +44,7 @@ export class UsersController {
   /*
     * used to define API path for userFindOne function 
     * in users.service
+    * by : Thanaphat
   */
 
   @Post('/finduser')
@@ -52,6 +56,7 @@ export class UsersController {
     * used to define API path for update function 
     * in users.service
     * not complete
+    * by : Thanaphat
   */
 
   @Patch(':id')
@@ -62,6 +67,7 @@ export class UsersController {
   /*
     * used to define API path for remove function 
     * in users.service
+    * by : Thanaphat
   */
 
   @Delete(':id')
