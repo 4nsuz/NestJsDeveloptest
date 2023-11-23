@@ -16,18 +16,22 @@ export class AuthService {
     */
 
     async signIn(username: string, pass: string): Promise<any> {
-        const inputData = {
-            username: username,
-            password: pass
+        if(username && pass){
+            const inputData = {
+                username: username
+            }
+            const user = await this.usersService.userFindOne(inputData);
+            if (user?.password !== pass || user?.isActive !== true) {
+                throw new UnauthorizedException();
+            } else {
+                if(user){
+                    const payload = { sub: user.id, username: user.username };
+                    return {
+                        access_token: await this.jwtService.signAsync(payload),
+                    };
+                }
+            }
         }
-        const user = await this.usersService.userFindOne(inputData);
-        if (user?.password !== pass || user?.isActive !== true) {
-            throw new UnauthorizedException();
-        } else {
-            const payload = { sub: user.id, username: user.username };
-            return {
-                access_token: await this.jwtService.signAsync(payload),
-            };
-        }
+        throw new UnauthorizedException();
     }
 }
