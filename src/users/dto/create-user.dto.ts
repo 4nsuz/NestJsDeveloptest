@@ -1,20 +1,20 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty,IsString,IsBoolean } from 'class-validator';
 
 export class CreateUserDto {
     id: number;
-    @IsNotEmpty()
+    @IsNotEmpty()@IsString()
     firstName: string;
-    @IsNotEmpty()
+    @IsNotEmpty()@IsString()
     lastName: string;
-    @IsNotEmpty()
+    @IsNotEmpty()@IsString()
     username: string;
-    @IsNotEmpty()
+    @IsNotEmpty()@IsString()
     password: string;
-    @IsNotEmpty()
+    @IsNotEmpty()@IsString()
     role: string;
     updatedAt: Date;
     createdAt: Date;
     isActive: boolean;
-    @IsNotEmpty()
+    @IsNotEmpty()@IsString()
     accessrole : string;
 }

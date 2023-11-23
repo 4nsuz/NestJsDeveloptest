@@ -1,8 +1,8 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class FindUserDto {
-    @IsNotEmpty()
+    @IsNotEmpty({ message: 'Username should not be empty' })
     username: string;
-    @IsNotEmpty()
+    @IsNotEmpty({ message: 'Password should not be empty' })
     password: string;
 }

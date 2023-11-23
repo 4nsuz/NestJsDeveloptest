@@ -1,36 +1,36 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty,IsString,IsDate } from 'class-validator';
 
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @IsNotEmpty()
+  @IsNotEmpty()@IsString()
   @Column()
   firstName: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty()@IsString()
   @Column()
   lastName: string;
   
   @Column()
-  @IsNotEmpty()
+  @IsNotEmpty()@IsString()
   username: string;
 
   @Column()
-  @IsNotEmpty()
+  @IsNotEmpty()@IsString()
   password: string;
 
-  @Column()
+  @Column()@IsDate()
   @IsNotEmpty()
   createdAt: Date;
 
-  @Column()
+  @Column()@IsDate()
   @IsNotEmpty()
   updatedAt: Date;
 
-  @Column()
+  @Column()@IsString()
   @IsNotEmpty()
   role: string;
 
